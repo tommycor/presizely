@@ -1,0 +1,18 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block title %} Historique{% endblock title %}
+
+{% block body %}
+	<h1>
+		Resources/User/Histo.html.twig
+	</h1>
+	<ul>
+		{% for histo in user.histories %}
+		    <li>{{ histo.article.name }} || {{ histo.grade }}</li>
+		{% endfor %}
+		
+	</ul>
+{{ form(form) }}
+
+{% endblock body %}

@@ -1,0 +1,81 @@
+{# 
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Presizely -{% block title %}{% endblock %}</title>
+
+  {% block stylesheets %}
+  {% endblock %}
+</head>
+<body>
+	{% block body %}
+    {% endblock %}
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+</body>
+</html>#}
+
+
+
+{# app/Resources/views/layout.html.twig #}
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Presizely - {% block title %}{% endblock %}</title>
+    <meta name="description" content="Presizely">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:300italic,400italic,600italic,700italic,800italic,300,400,600,700">
+    <link rel="stylesheet" href="{{ asset('styles/vendor.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/main.css') }}">
+    {% block styles %}{% endblock %}
+    <link id="primary_color_scheme" rel="stylesheet" href="{{ asset('styles/theme_presizely.css') }}">
+    <noscript>
+      <link rel="stylesheet" type="text/css" href="bower_components/SlitSlider/css/styleNoJs.css">
+    </noscript>
+    <script src="{{ asset('scripts/vendor/modernizr.js') }}"></script>
+    <script src="{{ asset('scripts/vendor/plugin.js') }}"></script>
+    <script src="{{ asset('scripts/vendor/bootstrap.js') }}"></script>
+    <script src="{{ asset('scripts/vendor/bootstrap-extend.js') }}"></script>
+  </head>
+  <body>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    {% block body %}{% endblock %}
+    <script src="{{ asset('scripts/main.js') }}"></script>
+    <script type="text/javascript" src="scripts/vendor/easybox/distrib.min.js"></script>
+    <script type="text/javascript" src="scripts/vendor/easybox/easybox.min.js"></script>
+    <script type="text/javascript" src="scripts/vendor/easybox/handlers.min.js"></script>
+    <script type="text/javascript" src="scripts/vendor/easybox/autoload.min.js"></script>
+    <script>
+    $(document).ready(function($) {
+      $('.gogoslide').click(function(){
+        $('.fake.s1').slider('setValue', 35);
+        $('.fake.s2').slider('setValue', 47);
+        $('.fake.s3').slider('setValue', 55);
+        $('.fake.s4').slider('setValue', 73);
+        $('.fake.s1').parent().next().children('.size_current').text('35 cm');
+        $('.fake.s2').parent().next().children('.size_current').text('47 cm');
+        $('.fake.s3').parent().next().children('.size_current').text('55 cm');
+        $('.fake.s4').parent().next().children('.size_current').text('73 cm');
+        $('.fake-svg').attr('src', 'img/svg/check.svg');
+        $('.search_button').trigger('click');
+      });
+    });
+    </script>
+  </body>
+</html>

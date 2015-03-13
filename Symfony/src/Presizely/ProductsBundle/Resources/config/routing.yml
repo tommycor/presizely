@@ -1,0 +1,15 @@
+presizely_add_articles:
+    path:     /addArticle
+    defaults: { _controller: PresizelyProductsBundle:Products:addArticle }
+
+presizely_all_articles:
+    path:     /allArticles
+    defaults: { _controller: PresizelyProductsBundle:Products:viewAllArticles }
+
+presizely_add_partenaire:
+    path:     /addPartener
+    defaults: { _controller: PresizelyProductsBundle:Products:addPartener }
+
+presizely_partener_to_articles:
+    path:     /partener-to-article
+    defaults: { _controller: PresizelyProductsBundle:Products:PartenerToArticle }

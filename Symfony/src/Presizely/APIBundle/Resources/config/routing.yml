@@ -1,0 +1,3 @@
+presizely_api_homepage:
+    path:    /
+    defaults: { _controller: PresizelyAPIBundle:API:index }

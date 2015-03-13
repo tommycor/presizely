@@ -1,0 +1,62 @@
+<?php
+// src/Presizely/UserBundle/Entity/Measurement.php
+
+namespace Presizely\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ */
+class Measurement
+{
+  /**
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
+
+  /**
+   * @ORM\Column(name="tour_tete", type="integer", nullable=true)
+   */
+  private $tetetete;
+  /**
+   * @ORM\Column(name="tete_cou", type="integer", nullable=true)
+   */
+  private $tetecou;
+  /**
+   * @ORM\Column(name="buste_epaule", type="integer", nullable=true)
+   */
+  private $busteepaule;
+  /**
+   * @ORM\Column(name="buste_poitrine", type="integer", nullable=true)
+   */
+  private $bustepoitrine;
+  /**
+   * @ORM\Column(name="main_poignet", type="integer", nullable=true)
+   */
+  private $mainpoignet;
+  /**
+   * @ORM\Column(name="main_main", type="integer", nullable=true)
+   */
+  private $mainmain;
+  /**
+   * @ORM\Column(name="jambe_hanche", type="integer", nullable=true)
+   */
+  private $jambehanche;
+  /**
+   * @ORM\Column(name="jambe_fesse", type="integer", nullable=true)
+   */
+  private $jambefesse;
+  /**
+   * @ORM\Column(name="pied_longueur", type="integer", nullable=true)
+   */
+  private $piedlongueur;
+  /**
+   * @ORM\Column(name="pied_largeur", type="integer", nullable=true)
+   */
+  private $piedlargeur;
+
+
+}

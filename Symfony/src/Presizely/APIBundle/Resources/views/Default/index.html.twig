@@ -1,0 +1,123 @@
+{% extends "::layout.html.twig" %}
+{% block title %}API{% endblock %}
+
+{% block body %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="api" tabindex="-1" role="dialog" aria-labelledby="ApiPresizely" aria-hidden="true">
+      <div class="modal-dialog">
+        
+        {% if not logged %}
+	        <div class="modal-content login">
+	          <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+
+
+				<form action="{{ path("fos_user_security_check") }}" method="post" class="form-inline">
+				    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+				    <input type="text" name="_username" value="{{ last_username }}" required="required"  class="form-control" id="login" placeholder="Login"/>
+
+				    <input type="password" id="password" name="_password" required="required"  class="form-control" placeholder="•••••••"/>
+
+				    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+
+				    <button type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"  class="btn btn-primary btn-xs green">Connexion</button>
+				</form>
+
+
+
+
+	          </div>
+	          <div class="modal-body">
+	           <h4>Avec <span>Presizely</span>, faites du prêt-à-porter votre sur-mesure.</h4>
+	           <p><i class="itlc">Renseignez simplement vos mensurations sur les sites partenaires et Presizely se chargera de vous trouver l’article à votre taille.</i></p>
+	            <img class="img-responsive" src="{{ asset('img/api/steps.png') }}"/>
+	            <div class="sep-top-xs"></div>
+	            <h4>Pour cela, <span>deux possibilités</span> :</h4>
+	            <ul>
+	              <li>Prenez vous même <span>vos mensurations</span> (mètre ruban).</li>
+	              <li>Référencez <span>un vêtement</span> qui vous va parfaitement.</li>
+	            </ul>
+	          </div>
+	          <div class="modal-footer">
+	            <p>Pas encore inscrit ? <a href="#">Rejoignez la communauté Presizely</a></p>
+	          </div>
+	        </div>
+
+		{% else %}
+	        <div class="modal-content logged">
+	          <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	            <ul class="nav nav-tabs" role="tablist">
+	              <li role="presentation" class="active"><a href="#taille" aria-controls="taille" role="tab" data-toggle="tab"><i class="fa fa-user fa-2x">&nbsp;</i> Ma taille</a></li>
+	              <li role="presentation"><a href="#proches" aria-controls="proches" role="tab" data-toggle="tab"><i class="fa fa-users fa-2x">&nbsp;</i> Mes proches</a></li>
+	              <li class="pull-right">
+	                <a id="dropdownMenuLogin" href="#" data-toggle="dropdown" class="dropdown-toggle">
+	                  <img src="{{ asset('img/portrait-sm-j.png') }}" class="img-portrait-xs img-circle"> {{ user.username }}<span class="caret"></span>
+	                </a>
+	                <ul aria-labelledby="dropdownMenuLogin" class="dropdown-menu widget-box">
+	                  <li role="presentation">
+	                    <a href="#" tabindex="-1" role="menuitem">Menu profil 1</a>
+	                  </li>
+	                  <li role="presentation">
+	                    <a href="#" tabindex="-1" role="menuitem">Menu profil 2</a>
+	                  </li>
+	                </ul>
+	              </li>
+	            </ul>
+	          </div>
+          {% endif %}
+
+          <div class="modal-body">
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="taille">
+            	{% if article %}
+	              <img class="logo-p pull-left" src="{{ asset('img/api/logo.png') }}"/><h4><span>Presizely</span> vous recommande la taille suivante :</h4>
+	              <div class="clearfix"></div>
+	              <div class="row">
+	                <div class="col-md-3">
+	                  <img class="center-block" src="{{ asset('img/articles/mini-article2.png') }}"/>
+	                </div>
+	                <div class="col-md-2">
+	                  <div class="center-block size-circle"><span>{{ article.sizeFrLetter }}</span></div>
+	                </div>
+	                <div class="col-md-7">
+	                  <p>Au niveau de la poitrine, la chemise est ample. <span>(+5cm)</span><br/>
+	                    La chemise est ajustée à la taille.<br/>
+	                    Au niveau des bras, la chemise est courte. <span>(-2cm)</span>
+	                  </p>
+	                  <button type="button" class="btn btn-primary btn-sm green center-block">Voir d'autres tailles disponibles</button>
+	                </div>
+	              </div>
+				
+				{% else %}
+
+	              <img class="logo-p pull-left" src="{{ asset('img/api/logo.png') }}"/><h4>Désolé, <span>Presizely</span> ne connais pas encore cet article!</h4>
+	              <div class="clearfix"></div>			
+
+	        	{% endif %}
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="proches">
+              <img class="logo-p pull-left" src="{{ asset('img/api/logo.png') }}"/><h4>Ce service <span>Presizely</span> arrive bientôt!</h4>
+              
+            </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <p>Pas encore inscrit ? <a href="#">Rejoignez la communauté Presizely</a></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <script>
+		$(document).ready(function() {
+			$('#api').modal('show');
+			$('#api').on('hidden.bs.modal', function (e) {
+				window.close();
+			});
+			});
+    </script>
+{% endblock %}

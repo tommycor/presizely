@@ -1,0 +1,15 @@
+presizely_user_home:
+    path:     /
+    defaults: { _controller: PresizelyUserBundle:User:Index }
+
+presizely_user_test_register:
+    path: /register
+    defaults: { _controller: PresizelyUserBundle:User:register }
+
+presizely_user_dashboard:
+    path: /dashboard
+    defaults: { _controller: PresizelyUserBundle:User:dashboard }
+
+presizely_user_histo:
+    path: /Histo
+    defaults: { _controller: PresizelyUserBundle:User:Histo }

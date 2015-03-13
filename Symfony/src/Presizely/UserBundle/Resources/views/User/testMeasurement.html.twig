@@ -1,0 +1,30 @@
+{% extends "::layout.html.twig" %}
+
+
+
+{% block title %}
+  Measurement de {{ user.username }}
+{% endblock %}
+
+{% block body %}
+	<h1>{{ user.username }}</h1>
+	<ul>
+
+		<li>tetetete {% if measurement is not null %}{{ measurement.tetetete }}{% endif %} || predicted {{ predicted.tetetete }}</li>
+		<li>tetecou {% if measurement is not null %}{{ measurement.tetecou }}{% endif %} || predicted {{ predicted.tetecou }}</li>
+		<li>busteepaule {% if measurement is not null %}{{ measurement.busteepaule }}{% endif %} || predicted {{ predicted.busteepaule }}</li>
+		<li>bustepoitrine {% if measurement is not null %}{{ measurement.bustepoitrine }}{% endif %} || predicted {{ predicted.bustepoitrine }}</li>
+		<li>mainpoignet {% if measurement is not null %}{{ measurement.mainpoignet }}{% endif %} || predicted {{ predicted.mainpoignet }}</li>
+		<li>mainmain {% if measurement is not null %}{{ measurement.mainmain }}{% endif %} || predicted {{ predicted.mainmain }}</li>
+		<li>jambehanche {% if measurement is not null %}{{ measurement.jambehanche }}{% endif %} || predicted {{ predicted.jambehanche }}</li>
+		<li>jambefesse {% if measurement is not null %}{{ measurement.jambefesse }}{% endif %} || predicted {{ predicted.jambefesse }}</li>
+		<li>piedlongueur {% if measurement is not null %}{{ measurement.piedlongueur }}{% endif %} || predicted {{ predicted.piedlongueur }}</li>
+		<li>piedlargeur {% if measurement is not null %}{{ measurement.piedlargeur }}{% endif %} || predicted {{ predicted.piedlargeur }} </li>
+
+
+		{{ form(form) }}
+	</ul>
+
+  
+
+{% endblock %}

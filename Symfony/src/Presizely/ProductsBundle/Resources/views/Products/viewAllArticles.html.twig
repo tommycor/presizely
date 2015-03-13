@@ -1,0 +1,16 @@
+{% extends "::layout.html.twig" %}
+
+
+
+{% block title %}
+  viewAllArticles
+{% endblock %}
+
+{% block body %}
+	{% for article in articles %}
+        <li>{{ article.name }}</li>
+    {% endfor %}
+
+  
+
+{% endblock %}

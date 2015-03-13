@@ -1,0 +1,4 @@
+services:
+#    presizely_api.example:
+#        class: Presizely\APIBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
